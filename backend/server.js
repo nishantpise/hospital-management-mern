@@ -7,6 +7,14 @@ cloudinary.v2.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server listening at port ${process.env.PORT}`);
+// ✅ Root route FIRST
+app.get("/", (req, res) => {
+  res.send("Hospital Management Backend is running 🚀");
+});
+
+// ✅ Use Render port safely
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, () => {
+  console.log(`Server listening at port ${PORT}`);
 });
